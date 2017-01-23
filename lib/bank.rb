@@ -16,7 +16,13 @@ class Bank
   end
 
   def balance
-    credit.inject{|sum, elem| sum + elem } - withdrawals.inject{|sum, elem| sum + elem}
+    sum_total_transactions(credit) - sum_total_transactions(withdrawals)
   end
+
+  private
+
+    def sum_total_transactions(transaction)
+      transaction.inject{|sum, elem| sumn + elem}
+    end
 
 end
