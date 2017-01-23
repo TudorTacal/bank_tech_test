@@ -59,7 +59,7 @@ describe Bank do
       bank.add_credit(1000, '10/01/2012')
       bank.add_credit(2000, '13/01/2012')
       bank.withdraw_money(500, '14/01/2012')
-      expect {bank.display_account_summary}.to output("date       || credit     || debit      || balance    \n10/01/2012 || 1000       ||            || 1000       \n").to_stdout
+      expect {bank.display_account_summary}.to output("date       || credit     || debit      || balance    \n14/01/2012 ||            || 500        || 2500       \n13/01/2012 || 2000       ||            || 3000       \n10/01/2012 || 1000       ||            || 1000       \n").to_stdout
     end
   end
 end
