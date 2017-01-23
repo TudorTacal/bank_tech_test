@@ -35,4 +35,13 @@ describe Bank do
     end
   end
 
+  context "Knowing the date of the transactions" do
+    it 'it should allow to record the date of the transaction' do
+      bank.add_credit(1000, '23/01/2017')
+      bank.withdraw_money(500, '23/01/2017')
+      expect(bank.date('23/01/2017')).to eq({credit: 1000, debit: 500})
+    end
+  end
 end
+
+# Date.today.strftime('%d-%m-%Y')
