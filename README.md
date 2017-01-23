@@ -29,6 +29,7 @@ bank.add_credit(2000, '13/01/2012')
 bank.withdraw_money(500, '14/01/2012')
 bank.display_account_summary
 ```
+* To see the tests run ```rspec``
 
 ## Approach
 
