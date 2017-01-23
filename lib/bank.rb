@@ -22,6 +22,10 @@ class Bank
     sum_total_transactions(credit) - sum_total_transactions(withdrawals)
   end
 
+  def display_account_summary
+  'date || credit || debit || balance'
+  end
+
   private
 
     def sum_total_transactions(transaction)

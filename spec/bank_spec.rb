@@ -51,8 +51,19 @@ describe Bank do
   end
 
   context 'Displays the account summary' do
-    it 'should contain the columns: data, credit, debit, balance separated by ||' do
-      expect(bank.account_summary).to eq 'date || credit || debit || balance'
+    it 'should siplay the columns: data, credit, debit, balance separated by || if no transactions have been made' do
+      expect(bank.display_account_summary).to eq 'date || credit || debit || balance'
+    end
+
+    it 'should display the transactions in ascending order wrt to date' do
+      bank.add_credit(1000, '10/01/2012')
+      bank.add_credit(2000, '13/01/2012')
+      bank.withdraw_money(500, '14/01/2012')
+      expect(bank.display_account_summary).to eq '  date       || credit || debit   || balance
+                                                    14/01/2012 ||        || 500.00  || 2500.00
+                                                    13/01/2012 || 2000.00||         || 3000.00
+                                                    10/01/2012 || 1000.00||         || 1000.00'
     end
   end
+
 end
