@@ -10,6 +10,8 @@ class Bank
     credit << amount
   end
 
-  
+  def withdraw_money(amount)
+
+  end
 
 end
