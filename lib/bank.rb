@@ -10,12 +10,12 @@ class Bank
 
   def add_credit(amount, date)
     credit << amount
-    @transactions["#{date}"][:credit] += amount
+    record_transaction(date, :credit, amount )
   end
 
   def withdraw_money(amount, date)
     withdrawals << amount
-    @transactions["#{date}"][:debit] += amount
+    record_transaction(date, :debit, amount )
   end
 
   def balance
@@ -26,6 +26,10 @@ class Bank
 
     def sum_total_transactions(transaction)
       transaction.inject{|sum, elem| sumn + elem}
+    end
+
+    def record_transaction(date, type, amount)
+      @transactions[date][type] += amount
     end
 
 end

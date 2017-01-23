@@ -42,7 +42,7 @@ describe Bank do
       expect(bank.transactions.keys).to include('23/01/2017')
     end
 
-    it 'should dipslay the trasactions for that date' do
+    it 'should display the trasactions ammounts made in that date' do
       bank.add_credit(1000, '23/01/2017')
       bank.withdraw_money(500, '23/01/2017')
       bank.add_credit(1000, '23/01/2017')
@@ -51,5 +51,3 @@ describe Bank do
 
   end
 end
-
-# Date.today.strftime('%d-%m-%Y')
