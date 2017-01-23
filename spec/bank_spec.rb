@@ -22,6 +22,11 @@ describe Bank do
       expect{bank.withdraw_money(1000)}.to_not raise_error
     end
 
+    it 'it should save the withdrawn amount into an array' do
+      bank.withdraw_money(1000)
+      expect(bank.withdrawals). to eq [1000]
+    end
+
   end
 
 end

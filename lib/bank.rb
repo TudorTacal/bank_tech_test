@@ -1,9 +1,10 @@
 class Bank
 
-  attr_reader :credit
+  attr_reader :credit, :withdrawals
 
   def initialize
     @credit = []
+    @withdrawals = []
   end
 
   def add_credit(amount)
@@ -11,7 +12,7 @@ class Bank
   end
 
   def withdraw_money(amount)
-
+    withdrawals << amount
   end
 
 end
