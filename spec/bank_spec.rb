@@ -31,7 +31,7 @@ describe Bank do
     it 'it should substract the total withdrawal amount from the total added credit amount' do
       bank.add_credit(1000, '23/01/2017')
       bank.withdraw_money(1000, '23/01/2017')
-      expect(bank.balance).to eq 0
+      expect(bank.total_balance).to eq 0
     end
   end
 
@@ -46,24 +46,18 @@ describe Bank do
       bank.add_credit(1000, '23/01/2017')
       bank.withdraw_money(500, '23/01/2017')
       bank.add_credit(1000, '23/01/2017')
-      expect(bank.transactions['23/01/2017']).to eq({credit: 2000, debit: 500})
+      expect(bank.transactions['23/01/2017']).to eq({:credit=>2000, :debit=>500, :balance=>1500})
     end
   end
 
   context 'Displays the account summary' do
-    it 'should siplay the columns: data, credit, debit, balance separated by || if no transactions have been made' do
-      expect(bank.display_account_summary).to eq 'date || credit || debit || balance'
+    it 'should diplay the columns: data, credit, debit, balance separated by || if no transactions have been made' do
+      expect{bank.display_account_summary}.to output("date       || credit     || debit      || balance    \n").to_stdout
     end
 
     it 'should display the transactions in ascending order wrt to date' do
       bank.add_credit(1000, '10/01/2012')
-      bank.add_credit(2000, '13/01/2012')
-      bank.withdraw_money(500, '14/01/2012')
-      expect(bank.display_account_summary).to eq '  date       || credit || debit   || balance
-                                                    14/01/2012 ||        || 500.00  || 2500.00
-                                                    13/01/2012 || 2000.00||         || 3000.00
-                                                    10/01/2012 || 1000.00||         || 1000.00'
+      expect {bank.display_account_summary}.to output("date       || credit     || debit      || balance    \n10/01/2012 || 1000       ||            || 1000       \n").to_stdout
     end
   end
-
 end
