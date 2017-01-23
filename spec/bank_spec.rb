@@ -13,7 +13,6 @@ describe Bank do
       bank.add_credit(1000)
       expect(bank.credit).to eq [1000]
     end
-
   end
 
   context 'Making withdrawals from the account' do
@@ -26,7 +25,14 @@ describe Bank do
       bank.withdraw_money(1000)
       expect(bank.withdrawals). to eq [1000]
     end
+  end
 
+  context 'Calculating the balance' do
+    it 'it should substract the total withdrawal amount from the total added credit amount' do
+      bank.add_credit(1000)
+      bank.withdraw_money(1000)
+      expect(bank.balance).to eq 0
+    end
   end
 
 end
