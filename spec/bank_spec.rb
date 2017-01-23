@@ -57,6 +57,7 @@ describe Bank do
 
     it 'should display the transactions in ascending order wrt to date' do
       bank.add_credit(1000, '10/01/2012')
+      # require 'pry';binding.pry
       expect {bank.display_account_summary}.to output("date       || credit     || debit      || balance    \n10/01/2012 || 1000       ||            || 1000       \n").to_stdout
     end
   end
