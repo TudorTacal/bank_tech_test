@@ -48,6 +48,11 @@ describe Bank do
       bank.add_credit(1000, '23/01/2017')
       expect(bank.transactions['23/01/2017']).to eq({credit: 2000, debit: 500})
     end
+  end
 
+  context 'Displays the account summary' do
+    it 'should contain the columns: data, credit, debit, balance separated by ||' do
+      expect(bank.account_summary).to eq 'date || credit || debit || balance'
+    end
   end
 end
