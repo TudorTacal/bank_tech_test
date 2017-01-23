@@ -15,4 +15,8 @@ class Bank
     withdrawals << amount
   end
 
+  def balance
+    credit.inject{|sum, elem| sum + elem } - withdrawals.inject{|sum, elem| sum + elem}
+  end
+
 end
