@@ -16,4 +16,12 @@ describe Bank do
 
   end
 
+  context 'Making withdrawals from the account' do
+
+    it 'it should have a method to withdraw money from the account' do
+      expect{bank.withdraw_money(1000)}.to_not raise_error
+    end
+
+  end
+
 end
